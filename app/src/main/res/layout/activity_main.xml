@@ -4,14 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#262d3b">
 
     <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
         android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
             android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:background="#11151d" app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:clickable="true" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -25,8 +27,8 @@
     <ImageView android:id="@+id/fab"
         android:layout_width="150px" android:layout_height="150px"
         android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/plus"
-        android:onClick="newTask"/>
+        android:src="@drawable/plus_white"
+        android:onClick="createNewTask"/>
 
 
 
