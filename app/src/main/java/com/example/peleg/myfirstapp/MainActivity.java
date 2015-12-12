@@ -12,7 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends ListActivity {
+
+    private List<String> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +35,8 @@ public class MainActivity extends ListActivity {
 //            }
 //        });
 
-        String[] list = {"One", "Two", "Three"};
+        list = new ArrayList<String>();
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(), android.R.layout.simple_list_item_1, list);
         getListView().setAdapter(adapter);
     }
@@ -59,6 +65,18 @@ public class MainActivity extends ListActivity {
 
     public void newTask(View view){
         Intent intent = new Intent(this, NewTaskActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, 2);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2){
+            if (data != null) {
+                String task_message = data.getStringExtra("MESSAGE");
+                list.add(task_message);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(), android.R.layout.simple_list_item_1, list);
+                getListView().setAdapter(adapter);
+            }
+        }
     }
 }
